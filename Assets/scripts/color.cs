@@ -11,10 +11,17 @@ public class color : MonoBehaviour
     string posicao;
     string palavra;
     bool verifica;
-    // Start is called before the first frame update
+
+    public GameObject currentImage;
+
     void Start()
+
+    
     {
         //
+
+        
+
         GetComponent<Renderer>().material.color = Color.red;
         palavra = "CASA";
 
@@ -46,7 +53,9 @@ public class color : MonoBehaviour
 
     void OnTriggerEnter(Collider outro){
         GetComponent<Renderer>().material.color = Color.green;
-       // Debug.Log("teste2");
+        Debug.Log(GameControllerSingleton.Instance.MyTestString);
+
+        GameControllerSingleton.Instance.nextLevel();
     }
 
     void OnTriggerExit(Collider other) {

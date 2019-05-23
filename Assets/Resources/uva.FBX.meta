@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b5ec5c57af98c349b22ae545a4a9fcd
+guid: e8bb3eef96d711844be43a8f0d80da2e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -9,7 +9,12 @@ ModelImporter:
     3300000: //RootNode
     4300000: grape
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #2213'
+    second: {fileID: 2100000, guid: 3bb2a1d1a437650428d0b11dcfa93c16, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
