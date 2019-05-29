@@ -15,15 +15,4 @@ public class Colision : MonoBehaviour
     {
         
     }
-
-    /* void OnTriggerEnter(Collider other) {
-        Debug.Log("teste");
-        //GetComponent<Renderer>().material.color = Color.green;
-        GetComponent<Renderer>().material.color = Color.green;
-    }*/
-
-    /* void OnCollisionEnter(Collision other) {
-        GetComponent<Renderer>().material.color = Color.green;
-        Debug.Log("teste4");
-    }*/
 }
