@@ -12,12 +12,14 @@ public class color : MonoBehaviour
     string palavra;
     bool verifica;
 
+    int t = -1;
+
     void Start()
 
     
     {
         GetComponent<Renderer>().material.color = Color.blue;
-        palavra = "CA";
+        
     }
 
     // Update is called once per frame
@@ -27,24 +29,30 @@ public class color : MonoBehaviour
 
     void OnTriggerEnter(Collider other){        
         //Debug.Log(GameControllerSingleton.Instance.MyTestString);
+        palavra = GameControllerSingleton.Instance.getCurrentWord();
         
         objeto = gameObject.name;
         objeto = objeto.Substring(5);
-        verifica = palavra.Contains(objeto);
+        verifica = palavra.Contains(objeto.ToLower());
 
         //Debug.Log(teste);
         if (verifica)
         {   
             GetComponent<Renderer>().material.color = Color.yellow;
-            int t = Int32.Parse(other.name);
+            //Debug.Log(other.name);
+            
+            t = Int32.Parse(other.name);
             string teste = palavra.Substring(t , 1);            
-            if (objeto.Contains(teste)){
+            if (objeto.ToLower().Contains(teste.ToLower())){
 
-                camera.GetComponent<cubos>().PalavraSoma();
+                
                 GetComponent<Renderer>().material.color = Color.green;   
+                camera.GetComponent<cubos>().PalavraSoma();                
                 
                 if(camera.GetComponent<cubos>().contpalavra == palavra.Length){
                     GameControllerSingleton.Instance.nextLevel();
+                    camera.GetComponent<cubos>().DestroiPlanos();
+                    camera.GetComponent<cubos>().CriaPlanos();
                 }                               
             }
         } else {
@@ -57,8 +65,8 @@ public class color : MonoBehaviour
         {   
             GetComponent<Renderer>().material.color = Color.yellow;
             int t = Int32.Parse(other.name);
-            string teste = palavra.Substring(t , 1);            
-            if (objeto.Contains(teste)){
+            string teste = palavra.Substring(t , 1);        
+            if (objeto.ToLower().Contains(teste.ToLower())){
                  camera.GetComponent<cubos>().PalavraSubtrai();
             } 
         }       
