@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.Text.RegularExpressions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class color : MonoBehaviour
     string palavra;
     bool verifica;
 
-    int t = -1;
+    int t = 0;
 
     void Start()
 
@@ -36,40 +37,41 @@ public class color : MonoBehaviour
         verifica = palavra.Contains(objeto.ToLower());
 
         //Debug.Log(teste);
-        if (verifica)
-        {   
-            GetComponent<Renderer>().material.color = Color.yellow;
-            //Debug.Log(other.name);
-            
-            t = Int32.Parse(other.name);
-            string teste = palavra.Substring(t , 1);            
-            if (objeto.ToLower().Contains(teste.ToLower())){
-
-                
-                GetComponent<Renderer>().material.color = Color.green;   
-                camera.GetComponent<cubos>().PalavraSoma();                
-                
-                if(camera.GetComponent<cubos>().contpalavra == palavra.Length){
-                    GameControllerSingleton.Instance.nextLevel();
-                    camera.GetComponent<cubos>().DestroiPlanos();
-                    camera.GetComponent<cubos>().CriaPlanos();
-                }                               
+        if(Regex.IsMatch(other.name, @"^\d$")){
+            if (verifica){   
+                GetComponent<Renderer>().material.color = Color.yellow;
+                //Debug.Log(other.name);                
+                t = Int32.Parse(other.name);
+                string teste = palavra.Substring(t , 1);            
+                if (objeto.ToLower().Contains(teste.ToLower())){                
+                    GetComponent<Renderer>().material.color = Color.green;   
+                    camera.GetComponent<cubos>().PalavraSoma();                
+                    
+                    if(camera.GetComponent<cubos>().contpalavra == palavra.Length){
+                        GameControllerSingleton.Instance.nextLevel();
+                        camera.GetComponent<cubos>().DestroiPlanos();
+                        camera.GetComponent<cubos>().CriaPlanos();
+                    }                               
+                }
+            } else {
+                GetComponent<Renderer>().material.color = Color.red;
             }
-        } else {
-            GetComponent<Renderer>().material.color = Color.red;
         }
     }
 
     void OnTriggerExit(Collider other) {
-         if (verifica)
-        {   
-            GetComponent<Renderer>().material.color = Color.yellow;
-            int t = Int32.Parse(other.name);
-            string teste = palavra.Substring(t , 1);        
-            if (objeto.ToLower().Contains(teste.ToLower())){
-                 camera.GetComponent<cubos>().PalavraSubtrai();
-            } 
-        }       
+        if(Regex.IsMatch(other.name, @"^\d$")){
+            if (verifica){   
+                GetComponent<Renderer>().material.color = Color.yellow;
+                
+                    int t = Int32.Parse(other.name);
+                
+                string teste = palavra.Substring(t , 1);        
+                if (objeto.ToLower().Contains(teste.ToLower())){
+                        camera.GetComponent<cubos>().PalavraSubtrai();
+                } 
+            }
+        }    
         GetComponent<Renderer>().material.color = Color.blue;
     }
 }
