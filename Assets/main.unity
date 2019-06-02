@@ -4090,6 +4090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7f5a23f7a9cc9a48aecf8bf48f49484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lista: {fileID: 0}
   contpalavra: 0
 --- !u!1 &740769429
 GameObject:
