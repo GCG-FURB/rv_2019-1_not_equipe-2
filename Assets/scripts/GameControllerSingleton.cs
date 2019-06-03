@@ -49,6 +49,22 @@ public class GameControllerSingleton : Singleton<GameControllerSingleton>
 			instance.transform.rotation = new Quaternion(0, 180, 0, 0);
 			instance.transform.localScale = new Vector3(2, 2, 2);
 		}
+		if (keyValuePair.Key.ToString().Equals("abacate")){
+			instance.transform.rotation = new Quaternion(0, 50, -30, 0);	
+		}
+		if (keyValuePair.Key.ToString().Equals("uva")){
+			instance.transform.localScale = new Vector3(10, 10, 10);
+		}
+		if (keyValuePair.Key.ToString().Equals("frio")){
+			instance.transform.position = new Vector3(11, 3, 15);
+			instance.transform.localScale = new Vector3(2, 2, 2);
+			instance.transform.rotation = new Quaternion(0, 180, 0, 0);
+		}
+		if (keyValuePair.Key.ToString().Equals("cadeira")){
+			instance.transform.localScale = new Vector3(4, 4, 4);
+			instance.transform.rotation = new Quaternion(0, 180, 0, 0);
+	        instance.transform.position = new Vector3(10, 3, 15);
+		}
     }
 
     public String getCurrentWord(){
