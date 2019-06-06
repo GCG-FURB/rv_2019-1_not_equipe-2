@@ -49,6 +49,7 @@ public class color : MonoBehaviour
                     
                     if(camera.GetComponent<cubos>().contpalavra == palavra.Length){
                         GameControllerSingleton.Instance.nextLevel();
+                        camera.GetComponent<cubos>().contpalavra = 0;
                         camera.GetComponent<cubos>().DestroiPlanos();
                         camera.GetComponent<cubos>().CriaPlanos();
                     }                               

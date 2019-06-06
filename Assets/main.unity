@@ -3362,7 +3362,7 @@ GameObject:
   - component: {fileID: 524488137}
   - component: {fileID: 524488136}
   m_Layer: 0
-  m_Name: PlaneO
+  m_Name: PloneO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10409,7 +10409,7 @@ GameObject:
   - component: {fileID: 1422732391}
   - component: {fileID: 1422732390}
   m_Layer: 0
-  m_Name: PlaneA
+  m_Name: PloneA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12281,7 +12281,7 @@ GameObject:
   - component: {fileID: 1857128631}
   - component: {fileID: 1857128630}
   m_Layer: 0
-  m_Name: PlaneA
+  m_Name: PloneA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
