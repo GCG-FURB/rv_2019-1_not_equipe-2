@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,7 @@ public class cubos : MonoBehaviour
 
 
     List<GameObject> planos = new List<GameObject>();
-
-    public int contpalavra = 0;
+    public int[] vpalavra = new int[8];
     string palavra;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,9 @@ public class cubos : MonoBehaviour
         GameControllerSingleton.Instance.nextLevel();
         palavra =  GameControllerSingleton.Instance.getCurrentWord();
         //Debug.Log(palavra.Length);
+        for (int i = 0; i < 10; i++){
+            vpalavra[i] = 0;
+        } 
 
         CriaPlanos();
     }
@@ -30,12 +33,12 @@ public class cubos : MonoBehaviour
         
     }
 
-    public void PalavraSoma(){
-        contpalavra++;
+    public void PalavraSoma(int i){
+        vpalavra[i] = 1;
     }
 
-    public void PalavraSubtrai(){
-        contpalavra--;
+    public void PalavraSubtrai(int i){
+        vpalavra[i] = 0;
     }
 
     public void CriaPlanos(){
@@ -55,5 +58,21 @@ public class cubos : MonoBehaviour
         {
             Destroy(g);
         }       
+    }
+
+    public bool verificapalavra(){
+        bool palavracerta = true;
+        for (int i = 0; i < palavra.Length; i++){
+            if(vpalavra[i] == 0){
+                palavracerta = false;
+            }
+        }
+        return palavracerta;
+    }
+
+    public void zeravpalavra(){
+        for (int i = 0; i < 10; i++){
+            vpalavra[i] = 0;
+        } 
     }
 }
